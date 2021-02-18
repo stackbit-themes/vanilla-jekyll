@@ -1,0 +1,19 @@
+---
+layout: body
+---
+
+<!-- Main -->
+<section class="page">
+    <header class="hero">
+        <div class="copy">
+            <h1>{{ page.title }}</h1>
+            {% assign subtitle_is_not_empty = page.subtitle | is_not_empty %}
+            {% if subtitle_is_not_empty %}
+            <h3>{{ page.subtitle }}</h3>
+            {% endif %}
+        </div>
+    </header>
+    <div class="content">
+        {{ content }}
+    </div>
+</section>

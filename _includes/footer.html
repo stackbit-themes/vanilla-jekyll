@@ -1,0 +1,32 @@
+<!-- Footer -->
+<footer class="footer container">
+    {% assign content_is_not_empty = site.footer.content | is_not_empty %}
+    {% if content_is_not_empty %}
+    <div class="copyright">{{ site.footer.content }}</div>
+    {% endif %}
+    {% assign links_is_not_empty = site.footer.links | is_not_empty %}
+    {% if links_is_not_empty %}
+    <nav>
+        {% for link in site.footer.links %}
+        <a href="{{ link.url | relative_url }}"
+            {% assign new_window_is_not_empty = link.new_window | is_not_empty %}{% if new_window_is_not_empty %} target="_blank"{% endif %}
+            {% if link.new_window or link.no_follow %} rel="{% assign new_window_is_not_empty = link.new_window | is_not_empty %}{% if new_window_is_not_empty %}noopener {% endif %}{% assign no_follow_is_not_empty = link.no_follow | is_not_empty %}{% if no_follow_is_not_empty %}nofollow{% endif %}"{% endif %}
+            class="subtle-link">{{ link.label }}</a>
+        {% endfor %}
+    </nav>
+    {% endif %}
+    {% assign has_social_is_not_empty = site.footer.has_social | is_not_empty %}
+    {% if has_social_is_not_empty %}
+    <div class="social-links">
+        {% for link in site.footer.social_links %}
+        {% assign link_is_not_empty = link | is_not_empty %}
+        {% if link_is_not_empty %}
+        <a href="{{ link.url | relative_url }}"
+            {% assign new_window_is_not_empty = link.new_window | is_not_empty %}{% if new_window_is_not_empty %} target="_blank"{% endif %}
+            {% if link.new_window or link.no_follow %} rel="{% assign new_window_is_not_empty = link.new_window | is_not_empty %}{% if new_window_is_not_empty %}noopener {% endif %}{% assign no_follow_is_not_empty = link.no_follow | is_not_empty %}{% if no_follow_is_not_empty %}nofollow{% endif %}"{% endif %}
+            class="subtle-link">{{ link.label }}</a>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+</footer>

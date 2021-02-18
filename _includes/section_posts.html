@@ -1,0 +1,22 @@
+<!-- Section -->
+{% assign section = include.section %}
+<section id="{{ section.section_id }}" class="posts">
+    {% assign display_posts = '/posts' | get_pages %}
+    {% assign arr = display_posts | sort: 'date' | reverse %}
+    {% for post in arr %}
+    <a href="{{ post.url | relative_url }}" class="article-teaser">
+        {% assign thumb_img_path_is_not_empty = post.thumb_img_path | is_not_empty %}{% if thumb_img_path_is_not_empty %}<img class="thumbnail" src="{{ post.thumb_img_path | relative_url }}" alt="{{ post.thumb_img_alt }}"/>{% endif %}
+        <div class="copy">
+            <h2>{{ post.title }}</h2>
+            <h3 class="publish-date">Published on {{ post.date | date: '%B %d, %Y' }}</h3>
+            {% assign excerpt_is_not_empty = post.excerpt | is_not_empty %}
+            {% if excerpt_is_not_empty %}
+            <p class="summary">{{ post.excerpt }}</p>
+            {% endif %}
+            {% if section.has_more_link == true and section.more_link_text %}
+            <div class="text-link">{{ section.more_link_text }}</div>
+            {% endif %}
+        </div>
+    </a>
+    {% endfor %}
+</section>

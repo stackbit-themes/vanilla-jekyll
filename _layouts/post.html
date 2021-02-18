@@ -1,0 +1,24 @@
+---
+layout: body
+---
+
+<!-- Main -->
+<section class="post">
+    {% assign content_img_path_is_not_empty = page.content_img_path | is_not_empty %}
+    {% if content_img_path_is_not_empty %}
+    <img class="header-image" src="{{ page.content_img_path | relative_url }}" alt="{{ page.content_img_alt }}"/>
+    {% endif %}
+    <header class="hero">
+        <div class="copy">
+            <h1>{{ page.title }}</h1>
+            {% assign subtitle_is_not_empty = page.subtitle | is_not_empty %}
+            {% if subtitle_is_not_empty %}
+            <h3>{{ page.subtitle }}</h3>
+            {% endif %}
+            <h3 class="publish-date">{{ page.date | date: '%A, %B %e, %Y' }}</h3>
+        </div>
+    </header>
+    <div class="content">
+        {{ content }}
+    </div>
+</section>

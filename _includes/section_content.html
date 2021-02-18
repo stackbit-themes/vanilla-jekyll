@@ -1,0 +1,11 @@
+<!-- Section -->
+{% assign section = include.section %}
+<section id="{{ section.section_id }}" class="content">
+    {% assign image_is_not_empty = section.image | is_not_empty %}{% if image_is_not_empty %}<img class="inline-image" src="{{ section.image | relative_url }}" alt="{{ section.image_alt }}" />{% endif %}
+    {% assign content_is_not_empty = section.content | is_not_empty %}
+    {% if content_is_not_empty %}
+    <div class="copy">
+        {{ section.content | markdownify }}
+    </div>
+    {% endif %}
+</section>
